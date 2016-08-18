@@ -34,24 +34,24 @@
 
         /**
          * @Api("api.bestFriend.getName")
-         * @Route()
+         * @Route("@@/:id", method="GET")
          * @Parameter("id", source="GET")
          * @Parameter("id2", source="ROUTE")
          *
          * @return string
          */
-        public function getBestFriend ($id) {
+        public function getBestFriend (Context $context, $id) {
             echo "Wurst: " . $id;
-            return "Me $id";
+            // Die Action speichert, wenn sie eine Route gesetzt hat, diese und stellt Link-Funktionen zur Verfügung. Genauso wie die Api.
+            return "Me $id mit link: {$context["some.action"]->link(["id"=>"some OhterId"], ["aGetParameter"=>"someVal"])}";
         }
 
 
         /**
          * @Action(bind="some.action")
-         * @Route(route = "/", method="GET")
+         * @Route("/", method="GET")
          */
         public function showMainSite (Context $di) {
-
             echo "Hallo '{$di["api.bestFriend.getName"](["id"=>"Uncle Bob"])}' some<br>";
         }
 
