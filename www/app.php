@@ -7,22 +7,24 @@
  */
 
     namespace App;
+    ini_set("display_errors", 1);
 
     use Gismo\Component\Config\AppConfig;
     use Gismo\Component\Config\ConfigLoader;
     use Gismo\Component\HttpFoundation\Request\RequestFactory;
+    use Gismo\Component\PhpFoundation\Helper\ErrorHandler;
 
     require __DIR__ . "/../vendor/autoload.php";
-    require __DIR__ . "/../../gismo/vendor/autoload.php";
-
-    ini_set("display_errors", 1);
+    require __DIR__ . "/../../gismo/gismo/vendor/autoload.php";
 
     // Aktivieren der Html-Sauberen Exception Darstellung
-    \Gismo\Component\PhpFoundation\Helper\ErrorHandler::UseHttpErrorHandler();
+    ErrorHandler::UseHttpErrorHandler();
 
-
-
-    ConfigLoader::FromFile(__DIR__ . "/../app.ini.dist", ConfigLoader::DEVELOPMENT, $config = new AppConfig());
+    ConfigLoader::FromFile(
+        __DIR__ . "/../app.ini.dist",
+        ConfigLoader::DEVELOPMENT,
+        $config = new AppConfig()
+    );
 
     // Request aus Environment bauen
     $request = RequestFactory::BuildFromEnv($config);
