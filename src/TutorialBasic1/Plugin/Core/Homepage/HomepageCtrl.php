@@ -52,7 +52,7 @@
          * @Route("/", method="GET")
          */
         public function showMainSite (Context $di) {
-            echo "Hallo '{$di["api.bestFriend.getName"](["id"=>"Uncle Bob"])}' some<br>";
+            echo "Hallo <a href='{$di["api.bestFriend.getName"]->link(["id"=>"Uncle Bob"])}'>click here</a> some<br>";
         }
 
     }
