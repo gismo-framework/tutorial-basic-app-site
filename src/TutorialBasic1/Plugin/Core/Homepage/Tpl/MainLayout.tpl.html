@@ -11,15 +11,20 @@
     <title>UNIQUE  BOOTSTRAP TEMPLATE - Peterna </title>
     <!--REQUIRED STYLE SHEETS-->
     <!-- BOOTSTRAP CORE STYLE CSS -->
-    <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type='text/css'/>
+    <!--link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type='text/css'/>
     <!-- FONTAWESOME STYLE CSS -->
-    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet" type='text/css'/>
+    <!--link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet" type='text/css'/>
     <!--ANIMATED FONTAWESOME STYLE CSS -->
-    <link href="{{ asset('assets/css/font-awesome-animation.css') }}" rel="stylesheet" type='text/css'/>
+    <!--link href="{{ asset('assets/css/font-awesome-animation.css') }}" rel="stylesheet" type='text/css'/>
     <!-- CUSTOM STYLE CSS -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+
+    <!-- This will include all css from all submodules -->
+    <go-call name="assetSetList.css()"/>
+
+    
+    <!--link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
     <!-- GOOGLE FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'-->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -366,12 +371,12 @@
 
 <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 <!-- CORE JQUERY  -->
-<script src="assets/plugins/jquery-1.10.2.js"></script>
+<!--script src="assets/plugins/jquery-1.10.2.js"></script>
 <!-- BOOTSTRAP CORE SCRIPT   -->
-<script src="assets/plugins/bootstrap.js"></script>
+<!--script src="assets/plugins/bootstrap.js"></script>
 
 <!-- CUSTOM SCRIPTS -->
-<script src="assets/js/custom.js"></script>
+<!--script src="assets/js/custom.js"></script>
 
 </body>
 </html>

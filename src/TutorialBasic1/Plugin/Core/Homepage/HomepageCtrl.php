@@ -16,6 +16,8 @@
     use Gismo\Component\Application\Builder\Annotation\App\Parameter;
     use Gismo\Component\Application\Builder\Annotation\App\Parameters;
     use Gismo\Component\Application\Builder\Annotation\App\Route;
+    use Gismo\Component\Application\Container\GoAssetSet;
+    use Gismo\Component\Application\Container\GoAssetSetList;
     use Gismo\Component\Application\Container\GoTemplate;
     use Gismo\Component\Application\Context;
     use Gismo\Component\Route\GoAction;
@@ -31,7 +33,26 @@
             $context["template.mainLayout"] = $context->template(__DIR__ . "/Tpl/MainLayout.tpl.html", "template.mainLayout");
             $context["template.partial.navBarTop"] = $context->template(__DIR__ . "/Tpl/NavBarTop.partial.html", "template.partial.navBarTop");
 
+            $context["assetSetList.css"] = $this->service(function () {
+                return new GoAssetSetList("assetSetList.css", $this);
+            });
+
+            // Der eigenltiche Asset-Satz, der für diesen Controller integriert werden soll
+            $context["assetSet.mainStyle.css"] = $this->service (function (){
+                return (new GoAssetSet("assetSet.mainStyle.css", __DIR__ . "/assets"))->autoInclude("*.css");
+            });
+
+
         }
+
+        /**
+         * @Filter("assetSetList.css")
+         */
+        public function addAssetSet (GoAssetSetList $list) {
+            $list[1] = "assetSet.mainStyle.css"; // Nur als String anfügen
+        }
+
+
 
         /**
          * @Filter("template.partial.navBarTop")
