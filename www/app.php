@@ -15,7 +15,7 @@
     use Gismo\Component\PhpFoundation\Helper\ErrorHandler;
 
     require __DIR__ . "/../vendor/autoload.php";
-    require __DIR__ . "/../../gismo/gismo/vendor/autoload.php";
+    require __DIR__ . "/../../gismo/vendor/autoload.php";
 
     // Aktivieren der Html-Sauberen Exception Darstellung
     ErrorHandler::UseHttpErrorHandler();
@@ -30,5 +30,5 @@
     $request = RequestFactory::BuildFromEnv($config);
 
     // App Laden und ausführen.
-    $app = new \Gismo\TutorialBasic1\App\HomepageApp();
+    $app = new \Gismo\TutorialBasic1\App\HomepageApp($config);
     $app->run($request);

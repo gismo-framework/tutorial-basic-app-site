@@ -6,7 +6,7 @@
      * Time: 14:58
      */
 
-    namespace Gismo\TutorialBasic1\Plugin\Core\Homepage;
+    namespace Gismo\TutorialBasic1\Plugin\Core\DownloadNow;
 
 
     use Gismo\Component\Application\Assets\Handler\GoCssAssetHandler;
@@ -23,24 +23,25 @@
     use Gismo\Component\Application\Assets\GoAssetSetList;
     use Gismo\Component\Application\Container\GoTemplate;
     use Gismo\Component\Application\Context;
+    use Gismo\Component\Application\Partial\GoListPartial;
     use Gismo\Component\Route\GoAction;
     use Gismo\TutorialBasic1\Context\Homepage\HomepageContext;
 
-    class HomepageCtrl {
+    class DownloadNowCtrl {
 
 
         /**
          * @ContextInit()
          */
         public function init(HomepageContext $context) {
-            $context->usePartial("action.home.content");
+            $context->useTemplate("template.downloadNow.header", __DIR__ . "/tpl/downloadNow.tpl.html");
         }
 
         /**
-         * @Filter("assetSetList.css")
+         * @Filter("action.home.content")
          */
-        public function addAssetSet (GoAssetSetList $§§input) {
-
+        public function addHomeHeaderSection (GoListPartial $§§input) {
+            $§§input[999] = "template.downloadNow.header";
         }
 
 
@@ -50,41 +51,19 @@
          * @param $§§input
          */
         public function filterNavBarTop (GoTemplate $§§input) {
-            $§§input[999] = function ($§§parameters, Context $context) {
-                $§§parameters["left"][$context["action.home"]->link() ] = "Home";
+            $§§input[1] = function ($§§parameters, Context $context) {
+                $§§parameters["left"][$context["action.downloadNow"]->link()] = "Download";
                 return $§§parameters;
-            };
-        }
 
-        /**
-         * @Filter("some.action")
-         * @param $§§input
-         */
-        public function filterMainAction ($§§input) {
-            $§§input[-10] = function () {
-                echo "Overwritten!";
             };
         }
 
 
-        /**
-         * @Api("api.bestFriend.getName")
-         * @Route("@@/:id", method="GET")
-         * @Parameter("id", source="GET")
-         * @Parameter("id2", source="ROUTE")
-         *
-         * @return string
-         */
-        public function getBestFriend (Context $context, $id) {
-            echo "Wurst: " . $id;
-            // Die Action speichert, wenn sie eine Route gesetzt hat, diese und stellt Link-Funktionen zur Verfügung. Genauso wie die Api.
-            return "Me $id mit link: {$context["some.action"]->link(["id"=>"some OhterId"], ["aGetParameter"=>"someVal"])}";
-        }
 
 
         /**
-         * @Action(bind="action.home")
-         * @Route("/home", method="GET")
+         * @Action(bind="action.downloadNow")
+         * @Route("/download/:what", method="GET")
          */
         public function showMainSite (Context $context) {
             //echo "Hallo <a href='{$di["api.bestFriend.getName"]->link(["id"=>"Uncle Bob"])}'>click here</a> some<br>";
