@@ -23,6 +23,7 @@
     use Gismo\Component\Application\Assets\GoAssetSetList;
     use Gismo\Component\Application\Container\GoTemplate;
     use Gismo\Component\Application\Context;
+    use Gismo\Component\Application\Partial\GoListPartial;
     use Gismo\Component\Route\GoAction;
     use Gismo\TutorialBasic1\Context\Homepage\HomepageContext;
 
@@ -34,13 +35,23 @@
          */
         public function init(HomepageContext $context) {
             $context->definePartial("action.home.content");
+            $context->defineTemplate("template.homepage.content", __DIR__ . "/tpl/template.homepage.content.html");
+
+            $context->defineAssetSet("assetSet.homepage.scss", __DIR__ . "/tpl", "*.scss", new GoScssAssetRenderer());
+        }
+
+        /**
+         * @Filter("action.home.content")
+         */
+        public function addPapstToHomepage (GoListPartial $§§input) {
+            $§§input[0] = "template.homepage.content";
         }
 
         /**
          * @Filter("assetSetList.css")
          */
-        public function addAssetSet (GoAssetSetList $§§input) {
-
+        public function addCss (GoAssetSetList $§§input) {
+            $§§input[0] = "assetSet.homepage.scss";
         }
 
 
