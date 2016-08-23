@@ -33,7 +33,7 @@
          * @ContextInit()
          */
         public function init(HomepageContext $context) {
-            $context->usePartial("action.home.content");
+            $context->definePartial("action.home.content");
         }
 
         /**
@@ -57,7 +57,7 @@
         }
 
         /**
-         * @Filter("some.action")
+         * @Filter("action.home")
          * @param $§§input
          */
         public function filterMainAction ($§§input) {
@@ -84,7 +84,7 @@
 
         /**
          * @Action(bind="action.home")
-         * @Route("/home", method="GET")
+         * @Route("/", method="GET")
          */
         public function showMainSite (Context $context) {
             //echo "Hallo <a href='{$di["api.bestFriend.getName"]->link(["id"=>"Uncle Bob"])}'>click here</a> some<br>";

@@ -34,7 +34,8 @@
          * @ContextInit()
          */
         public function init(HomepageContext $context) {
-            $context->useTemplate("template.downloadNow.header", __DIR__ . "/tpl/downloadNow.tpl.html");
+            $context->defineTemplate("template.downloadNow.header", __DIR__ . "/tpl/downloadNow.tpl.html");
+            $context->defineTemplate("template.downloadNow.content", __DIR__ . "/tpl/downloadNow_content.tpl.html");
         }
 
         /**
@@ -43,8 +44,6 @@
         public function addHomeHeaderSection (GoListPartial $§§input) {
             $§§input[999] = "template.downloadNow.header";
         }
-
-
 
         /**
          * @Filter("template.mainLayout.navBarTop")
@@ -59,15 +58,13 @@
         }
 
 
-
-
         /**
          * @Action(bind="action.downloadNow")
-         * @Route("/download/:what", method="GET")
+         * @Route("/download/::params", method="GET")
          */
         public function showMainSite (Context $context) {
             //echo "Hallo <a href='{$di["api.bestFriend.getName"]->link(["id"=>"Uncle Bob"])}'>click here</a> some<br>";
-            echo $context["template.mainLayout"](["content" => $context["action.home.content"]()]);
+            echo $context["template.mainLayout"](["content" => $context["template.downloadNow.content"]()]);
         }
 
     }

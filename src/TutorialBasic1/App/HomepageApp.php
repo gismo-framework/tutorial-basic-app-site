@@ -13,6 +13,7 @@
     use Gismo\Component\Config\AppConfig;
     use Gismo\Component\HttpFoundation\Request\Request;
     use Gismo\Component\Plugin\App;
+    use Gismo\Component\Plugin\Loader\JsonFilePluginLoader;
     use Gismo\Component\Route\Type\RouterRequest;
     use Gismo\TutorialBasic1\Context\Homepage\HomepageContext;
     use Gismo\TutorialBasic1\Layout\HomepageLayout\HomepageLayoutPlugin;
@@ -32,17 +33,10 @@
             $debug = false;
             if ($config->ENVIRONMENT === "DEVELOPMENT")
                 $debug = true;
-            $this->mContext = $c = new HomepageContext(true);
+            $this->mContext = $c = new HomepageContext(false);
 
-
-            $p = new HomepagePlugin();
-            $p->onContextInit($c);
-
-            $p = new HomepageLayoutPlugin();
-            $p->onContextInit($c);
-
-            $p = new DownloadNowPlugin();
-            $p->onContextInit($c);
+            $pluginLoader = new JsonFilePluginLoader($this->mContext);
+            $pluginLoader->initPluginsFromFile(__DIR__ . "/../plugins.json");
 
         }
 

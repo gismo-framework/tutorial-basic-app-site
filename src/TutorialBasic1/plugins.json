@@ -1,0 +1,7 @@
+{
+  "plugins": [
+    "Gismo\\TutorialBasic1\\Layout\\HomepageLayout\\HomepageLayoutPlugin",
+    "Gismo\\TutorialBasic1\\Plugin\\Core\\DownloadNow\\DownloadNowPlugin",
+    "Gismo\\TutorialBasic1\\Plugin\\Core\\Homepage\\HomepagePlugin"
+  ]
+}
