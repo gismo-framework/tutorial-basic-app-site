@@ -95,7 +95,7 @@
 
         /**
          * @Action(bind="action.home")
-         * @Route("/", method="GET")
+         * @Route("/home", method="GET")
          */
         public function showMainSite (Context $context) {
             //echo "Hallo <a href='{$di["api.bestFriend.getName"]->link(["id"=>"Uncle Bob"])}'>click here</a> some<br>";

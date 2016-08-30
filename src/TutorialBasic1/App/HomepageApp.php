@@ -33,7 +33,7 @@
             $debug = false;
             if ($config->ENVIRONMENT === "DEVELOPMENT")
                 $debug = true;
-            $this->mContext = $c = new HomepageContext(false);
+            $this->mContext = $c = new HomepageContext(true);
 
             $pluginLoader = new JsonFilePluginLoader($this->mContext);
             $pluginLoader->initPluginsFromFile(__DIR__ . "/../plugins.json");

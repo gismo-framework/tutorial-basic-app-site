@@ -50,7 +50,7 @@
          * @param $§§input
          */
         public function filterNavBarTop (GoTemplate $§§input) {
-            $§§input[1] = function ($§§parameters, Context $context) {
+            $§§input[3] = function ($§§parameters, Context $context) {
                 $§§parameters["left"][$context["action.downloadNow"]->link()] = "Download";
                 return $§§parameters;
 

@@ -35,7 +35,7 @@ composer update
 aus. (Ggf. musst Du Composer erst durch `sudo apt-get install composer`
 installieren.)
 
-Nachdem Composer gupdatet ist, findest du ein neues Verzeichnis
+Nachdem Composer geupdatet ist, findest du ein neues Verzeichnis
 `/vendor`. Warum war das Verzeichnis vorher nicht da? Guck mal in
 die Datei `/.gitignore`. Hier ist festgelegt, welche Verzeichnisse
 nicht mit ins Repository hochgeladen werden dürfen.
@@ -69,9 +69,13 @@ ebenfalls in der `/composer.json` definiert:
 ## Apache konfigurieren
 
 Damit Mod-Rewrite arbeiten kann, muss `AllowOverride All` in der Apache-
-Host-Config gesetzt sein.
+Host-Config gesetzt sein. Dazu muss mod-rewrite enabled sein: 
 
-Also als root die Datei `/etc/apache2/hosts-available/000-default` editieren
+```
+sudo a2enmod rewrite
+```
+
+Also als root die Datei `/etc/apache2/sites-available/000-default.conf` editieren
 und AllowOverride einfügen:
 
 ```

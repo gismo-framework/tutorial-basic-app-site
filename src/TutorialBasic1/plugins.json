@@ -2,6 +2,9 @@
   "plugins": [
     "Gismo\\TutorialBasic1\\Layout\\HomepageLayout\\HomepageLayoutPlugin",
     "Gismo\\TutorialBasic1\\Plugin\\Core\\DownloadNow\\DownloadNowPlugin",
-    "Gismo\\TutorialBasic1\\Plugin\\Core\\Homepage\\HomepagePlugin"
+    "Gismo\\TutorialBasic1\\Plugin\\Core\\Homepage\\HomepagePlugin",
+    "Gismo\\TutorialBasic1\\Plugin\\Core\\Contact\\ContactPlugin",
+    "Gismo\\TutorialBasic1\\Plugin\\Core\\ListItem\\ListItemPlugin",
+    "Gismo\\TutorialBasic1\\Plugin\\Core\\ProdList\\ProdListPlugin"
   ]
 }
